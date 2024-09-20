@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<languages>
+	<language name="English" id="en">
+		<contenttypes>
+			<icontentdata>
+				<properties>
+					<metatitle>
+						<caption>Meta title</caption>
+						<help>Add for better SEO</help>
+					</metatitle>
+				</properties>
+			</icontentdata>
+			<startpage>
+				<properties>
+					<heading>
+						<caption>Heading</caption>
+						<help>Add a heading</help>
+					</heading>
+				</properties>
+			</startpage>
+		</contenttypes>
+	</language>
+	<language name="Svenska" id="sv">
+		<contenttypes>
+			<icontentdata>
+				<properties>
+					<metatitle>
+						<caption>Metatitel</caption>
+						<help>Lägg till en metatitel för bättre SEO</help>
+					</metatitle>
+				</properties>
+			</icontentdata>
+			<startpage>
+				<properties>
+					<heading>
+						<caption>Rubrik</caption>
+						<help>Lägg till en rubrik</help>
+					</heading>
+				</properties>
+			</startpage>
+		</contenttypes>
+	</language>
+</languages>

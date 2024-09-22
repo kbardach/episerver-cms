@@ -3,6 +3,7 @@ using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
+using kim_episerver.Business.Extensions;
 
 namespace kim_episerver
 {
@@ -27,6 +28,7 @@ namespace kim_episerver
             services
                 .AddCmsAspNetIdentity<ApplicationUser>()
                 .AddCms()
+                .AddNackademin()
                 .AddAdminUserRegistration()
                 .AddEmbeddedLocalization<Startup>();
         }

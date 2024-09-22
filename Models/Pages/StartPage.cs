@@ -10,6 +10,15 @@ namespace kim_episerver.Models.Pages
     )]
 
     [ImageUrl("/pages/CMS-icon-page-02.png")]
+    [AvailableContentTypes(
+        Availability.Specific,
+        Include =
+        [
+            typeof(SettingsPage),
+            typeof(ArticlePage)
+        ]
+    )]
+
     public class StartPage : SitePageData
     {
         [Display(

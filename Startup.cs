@@ -1,4 +1,5 @@
 using EPiServer.Cms.Shell;
+using EPiServer.Cms.Shell.UI.Configurations;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
@@ -24,6 +25,11 @@ namespace kim_episerver
 
                 services.Configure<SchedulerOptions>(options => options.Enabled = false);
             }
+
+            services.Configure<UploadOptions>(x =>
+            {
+                x.FileSizeLimit = 52428800; // Filstorleksbegränsning satt till 50 MB
+            });
 
             services
                 .AddCmsAspNetIdentity<ApplicationUser>()

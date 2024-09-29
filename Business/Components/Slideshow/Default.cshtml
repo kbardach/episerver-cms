@@ -1,0 +1,45 @@
+﻿@using EPiServer.Web.Routing
+@using kim_episerver.Business.Components.Slideshow
+
+@model SlideshowViewComponentModel
+
+@* @foreach (var item in Model.Pages)
+{
+    <img src="@UrlResolver.Current.GetUrl(item.Image)" />
+} *@
+
+
+<div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        @for (int i = 0; i < Model.Pages.Count; i++)
+        {
+            var activeClass = i == 0 ? "active" : "";
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="@i" class="@activeClass" aria-label="Slide @(i + 1)" aria-current="@(i == 0 ? "true" : "false")"></button>
+        }
+    </div>
+
+    <div class="carousel-inner">
+        @foreach (var item in Model.Pages.Select((page, index) => new { page, index }))
+        {
+            <div class="carousel-item @(item.index == 0 ? "active" : "")">
+                <img src="@UrlResolver.Current.GetUrl(item.page.Image)" class="carousel-poster" />
+                <div class="container">
+                    <div class="carousel-caption @(item.index == 0 ? "text-start" : item.index == Model.Pages.Count - 1 ? "text-end" : "")">
+                        <h1>@Html.Raw(item.page.Heading)</h1>
+                        <p>@Html.Raw(item.page.Text)</p>
+                    <p><a class="btn btn-lg btn-primary" href="@item.page.Link">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

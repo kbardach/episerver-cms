@@ -38,7 +38,7 @@ namespace kim_episerver.Business
                 SettingsPage = GetSettingsPage(),
 
                 //tillagd själv, måste lägga till properties i LayoutModel.cs   => public ArticlePage ArticelPage { get; set; }
-                ArticelPage = GetArticlePage()
+                //ArticelPage = GetArticlePage()
             };
         }
 

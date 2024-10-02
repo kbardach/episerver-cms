@@ -5,6 +5,7 @@ using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
 using kim_episerver.Business.Extensions;
+using kim_episerver.Business.Services;
 
 namespace kim_episerver
 {
@@ -37,6 +38,8 @@ namespace kim_episerver
                 .AddNackademin()
                 .AddAdminUserRegistration()
                 .AddEmbeddedLocalization<Startup>();
+
+            services.AddHttpClient<IMovieService, MovieService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

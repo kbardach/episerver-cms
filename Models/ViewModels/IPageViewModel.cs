@@ -7,5 +7,16 @@ namespace kim_episerver.Models.ViewModels
         T CurrentPage { get; }
 
         LayoutModel Layout { get; set; }
+
+
+        public string MetaTitle
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(CurrentPage.MetaTitle)
+                    ? CurrentPage.MetaTitle
+                    : "Kimpa the King";  
+            }
+        }
     }
 }

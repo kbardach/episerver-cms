@@ -1,0 +1,28 @@
+﻿﻿@using EPiServer.Web.Mvc.Html
+@using kim_episerver.Models.ViewModels
+
+@model MoviePageViewModel
+
+<head>
+    <link href="~/css/movie-details.css" rel="stylesheet" />
+</head>
+
+<div class="container movie-detail-container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <!-- Movie Poster -->
+            <img src="@Model.Movie.Poster" class="poster-image-detail" onerror="this.src='/media/default-movie-poster.jpg'" alt="Static Movie Title Poster" />
+        </div>
+        <div class="col-md-8">
+            <!-- Movie Details -->
+            <h2 class="movie-title-detail">@Model.Movie.Title</h2>
+            <p class="movie-year-detail">@Model.Movie.Year | <span class="text-warning"><i class="fas fa-star"></i>@Model.Movie.ImdbRating</span></p>
+            <p class="movie-runtime-detail">@Model.Movie.Runtime</p>
+            <p class="movie-plot-detail">@Model.Movie.Plot</p>
+
+            <!-- Director and Actors -->
+            <p class="movie-director-detail"><strong>Director: @Model.Movie.Director</strong> </p>
+            <p class="movie-actors-detail"><strong>Actors: @Model.Movie.Actors</strong></p>
+        </div>
+    </div>
+</div>

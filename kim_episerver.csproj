@@ -28,8 +28,4 @@
   <ItemGroup>
     <None Remove="Resources\Translations\PropertyNames.xml" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 ﻿using EPiServer.Shell.ViewComposition;
 using EPiServer.Web;
+using kim_episerver.Models.Blocks;
 using System.ComponentModel.DataAnnotations;
 using static kim_episerver.Globals;
 
@@ -16,8 +17,8 @@ namespace kim_episerver.Models.Pages
         [
             typeof(SettingsPage),
             typeof(ArticlePage),
-            //typeof(SlideshowPage),
-            typeof(ContainerPage)
+            typeof(ContainerPage),
+            typeof(SearchPage)
         ]
     )]
     public class StartPage : SitePageData
@@ -44,10 +45,11 @@ namespace kim_episerver.Models.Pages
             Description = ""
         )]
         [AllowedTypes(
-            typeof(SlideshowPage)
-            //typeof(SlideshowBlock)
+            typeof(SlideshowPage),
+            typeof(SlideshowBlock)
         )]
 
         public virtual ContentArea Content { get; set; }
+
     }
 }

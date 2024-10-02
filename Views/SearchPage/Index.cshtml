@@ -1,0 +1,56 @@
+﻿@using kim_episerver.Models.ViewModels
+﻿@using EPiServer.Web.Mvc.Html
+
+@model SearchPageViewModel
+
+<head>
+    <link href="~/css/search.css" rel="stylesheet" />
+</head>
+
+<div class="container">
+    <!-- Search Form -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <form class="d-flex" id="searchForm">
+                <div class="input-group search-box">
+                    <input class="form-control search-input" id="searchQuery" name="query" type="search" placeholder="Search for a movie" aria-label="Search">
+                    <button class="input-group-text search-button">
+                        <i class="fas fa-search"></i> <!-- Magnifying glass icon -->
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Search Results -->
+    <div class="search-results mt-4" id="searchResults">
+        <ul>
+            @foreach (var item in Model.Movies)
+            {
+                <li class="result-item d-flex align-items-start">
+                    <form method="post" asp-controller="SearchPage" asp-action="RenderMoviePage">
+                        <button type="submit" class="p-0 border-0 bg-transparent text-start">
+                            <div class="d-flex w-100 h-100">
+                                <img src="@item.Poster" onerror="this.src='/media/default-movie-poster.jpg'" class="poster-image" alt="Poster" />
+                                <div class="movie-details ms-3">
+                                    <h5 class="movie-title">@item.Title</h5>
+                                    <p class="movie-plot">@item.Plot</p>
+                                    <p class="movie-year">@item.Year | @item.Runtime | <span class="text-warning"><i class="fas fa-star"></i></span> @item.ImdbRating</p>
+                                </div>
+                            </div>
+                        </button>
+                        <input type="hidden" name="title" value="@item.Title" />
+                        <input type="hidden" name="year" value="@item.Year" />
+                        <input type="hidden" name="runtime" value="@item.Runtime" />
+                        <input type="hidden" name="director" value="@item.Director" />
+                        <input type="hidden" name="actors" value="@item.Actors" />
+                        <input type="hidden" name="imdbrating" value="@item.ImdbRating" />
+                        <input type="hidden" name="imdbid" value="@item.ImdbID" />
+                        <input type="hidden" name="plot" value="@item.Plot" />
+                        <input type="hidden" name="poster" value="@item.Poster" />
+                    </form>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

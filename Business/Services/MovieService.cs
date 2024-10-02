@@ -8,11 +8,13 @@ namespace kim_episerver.Business.Services
     {
         private readonly HttpClient _httpClient;
         private readonly ILogger<MovieService> _logger;
+        private readonly string? _apiKey;
 
-        public MovieService(HttpClient httpClient, ILogger<MovieService> logger)
+        public MovieService(HttpClient httpClient, ILogger<MovieService> logger, IConfiguration configuration)
         {
             _httpClient = httpClient;
             _logger = logger;
+            _apiKey = configuration["MovieApiKey"];
         }
 
         public async Task<List<MovieDetails>> GetMoviesWithDetailsAsync(string query)
@@ -21,7 +23,7 @@ namespace kim_episerver.Business.Services
 
             try
             {
-                var firstRequest = new HttpRequestMessage(HttpMethod.Get, $"https://www.omdbapi.com/?s={query}&apikey=4c268ca5");
+                var firstRequest = new HttpRequestMessage(HttpMethod.Get, $"https://www.omdbapi.com/?s={query}&apikey={_apiKey}");
                 var firstResponse = await _httpClient.SendAsync( firstRequest );
 
                 if (firstResponse.IsSuccessStatusCode)
@@ -33,8 +35,7 @@ namespace kim_episerver.Business.Services
                     {
                         foreach (var movie in searchResult.Search)
                         {
-                            //kolla om detta ska vara en post elr get
-                            var secondRequest = new HttpRequestMessage(HttpMethod.Get, $"https://www.omdbapi.com/?i={movie.ImdbID}&apikey=4c268ca5");
+                            var secondRequest = new HttpRequestMessage(HttpMethod.Get, $"https://www.omdbapi.com/?i={movie.ImdbID}&apikey={_apiKey}");
                             var secondResponse = await _httpClient.SendAsync( secondRequest );
 
                             if (secondResponse.IsSuccessStatusCode)

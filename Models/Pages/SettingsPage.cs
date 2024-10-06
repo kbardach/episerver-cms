@@ -10,6 +10,11 @@ namespace kim_episerver.Models.Pages
     [ImageUrl("/pages/CMS-icon-page-03.png")]
     public class SettingsPage : SitePageData
     {
+        [Display(
+            GroupName = SystemTabNames.Content,
+            Order = 10
+        )]
 
+        public virtual ContentReference LinkToMoviesContainer { get; set; }
     }
 }

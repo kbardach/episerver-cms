@@ -5,7 +5,8 @@
         )]
     [AvailableContentTypes(
         Availability.Specific,
-        Include = [typeof(SlideshowPage)]
+        Include = [typeof(SlideshowPage),
+        typeof(SavedMoviePage)]
     )]
     public class ContainerPage : PageData, IContainerPage
     {

@@ -1,4 +1,4 @@
-﻿using kim_episerver.Business.Services;
+﻿using kim_episerver.Business.Services.Interfaces;
 using kim_episerver.Models;
 using kim_episerver.Models.Pages;
 using kim_episerver.Models.ViewModels;

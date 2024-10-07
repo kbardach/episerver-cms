@@ -6,6 +6,7 @@ using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
 using kim_episerver.Business.Extensions;
 using kim_episerver.Business.Services;
+using kim_episerver.Business.Services.Interfaces;
 
 namespace kim_episerver
 {
@@ -40,6 +41,7 @@ namespace kim_episerver
                 .AddEmbeddedLocalization<Startup>();
 
             services.AddHttpClient<IMovieService, MovieService>();
+            services.AddSingleton<IXmlSitemapService, XmlSitemapService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,4 +1,5 @@
 ﻿using EPiServer.Shell.Search;
+using kim_episerver.Business.Services.Interfaces;
 using kim_episerver.Models;
 using Newtonsoft.Json;
 

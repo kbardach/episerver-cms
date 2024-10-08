@@ -19,6 +19,7 @@ namespace kim_episerver.Models.Pages
             typeof(ArticlePage),
             typeof(ContainerPage),
             typeof(XmlSitemap),
+            typeof(ErrorPage),
             typeof(SearchPage)
         ]
     )]

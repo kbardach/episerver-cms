@@ -51,6 +51,17 @@ namespace kim_episerver
                 app.UseDeveloperExceptionPage();
             }
 
+            //Custom 404 Handling
+            app.UseStatusCodePages(async context =>
+            {
+                if (context.HttpContext.Response.StatusCode == 404)
+                {
+                    context.HttpContext.Request.Path = "/error";
+
+                    await context.Next(context.HttpContext);
+                }
+            });
+
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
